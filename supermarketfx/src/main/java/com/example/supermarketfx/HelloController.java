@@ -6,8 +6,11 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class HelloController {
     @FXML
@@ -22,7 +25,7 @@ public class HelloController {
 
 
     @FXML
-    protected void onLoginButtonClick() {
+    protected void onLoginButtonClick() throws IOException {
         String user = userName.getText();
         String password = pwd.getText();
         if(validLogin(user, password)) {
@@ -31,16 +34,13 @@ public class HelloController {
     }
 
     public boolean validLogin(String user, String password) {
-        boolean login = false;
-        if(user.equals("antonio") && password.equals("123")) {
-            login = true;
-        }
-        return login;
+        return user.equals("antonio") && password.equals("123");
     }
 
-    public void switchScene(String fxml) {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("menu-view.fxml"));
-        scene = new Scene(fxmlLoader.getRoot());
+    public void switchScene(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxml));
+        stage = (Stage)loginButton.getScene().getWindow();
+        scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
     }
