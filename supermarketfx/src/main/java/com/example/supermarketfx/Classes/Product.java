@@ -4,13 +4,13 @@ public class Product {
     private String name;
     private int price;
     private int quantity;
-    private int id;
+    private Barcode barcode;
 
-    public Product(String name, int price, int quantity, int id) {
+    public Product(String name, int price, int quantity, int code) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-        this.id = id;
+        barcode.setBarcode(code);
     }
 
     public String getName() {
@@ -36,13 +36,5 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

@@ -25,9 +25,9 @@ public class MenuController {
 
     public MenuController() {
         //connectToDatabase();
-        Image image = new Image("resources/com/example/supermarketfx/images/logo.png");
-        logo.setImage(image);
-        logo.setCache(true);
+        //Image image = new Image("resources/com/example/supermarketfx/images/logo.png");
+        //logo.setImage(image);
+        //logo.setCache(true);
     }
     public void connectToDatabase() {
         Connection connection = null;
