@@ -3,7 +3,7 @@ package com.example.supermarketfx.Classes;
 import java.util.Random;
 
 public class Barcode {
-    private int barcode;
+    private double barcode;
 
     public Barcode() {
 
@@ -19,7 +19,7 @@ public class Barcode {
         barcode = calcCheckSum(eanCode);
     }
 
-    public int calcCheckSum(int code) {
+    public double calcCheckSum(int code) {
         int length = String.valueOf(code).length();
         if (length != 7) {
             code += 1000000;
@@ -38,10 +38,10 @@ public class Barcode {
     }
 
     public boolean checkBarcode() {
-        return Integer.toString(this.barcode).length() == 8;
+        return Double.toString(this.barcode).length() == 8;
     }
 
-    public int getBarcode() {
+    public double getBarcode() {
         return barcode;
     }
 

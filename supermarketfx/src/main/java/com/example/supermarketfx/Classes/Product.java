@@ -1,10 +1,12 @@
 package com.example.supermarketfx.Classes;
 
+import java.sql.Connection;
+
 public class Product {
     private String name;
     private int price;
     private int quantity;
-    private Barcode barcode;
+    private Barcode barcode = new Barcode();
 
     public Product(String name, int price, int quantity, int code) {
         this.name = name;
@@ -12,7 +14,6 @@ public class Product {
         this.quantity = quantity;
         barcode.setBarcode(code);
     }
-
     public String getName() {
         return name;
     }
@@ -21,7 +22,9 @@ public class Product {
         this.name = name;
     }
 
-
+    public double getBarcode() {
+        return barcode.getBarcode();
+    }
     public int getPrice() {
         return price;
     }

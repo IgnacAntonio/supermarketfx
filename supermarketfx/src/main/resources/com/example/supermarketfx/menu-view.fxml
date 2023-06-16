@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.supermarketfx.MenuController">
    <children>
       <Button fx:id="logout" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#onLogoutButtonClick" text="Logout" />
-      <ImageView fx:id="logo" fitHeight="150.0" fitWidth="250.0" layoutX="183.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="194.0" layoutY="14.0" text="You are an Admin">
+         <font>
+            <Font size="27.0" />
+         </font></Label>
+      <Button fx:id="addProductButton" layoutX="68.0" layoutY="125.0" mnemonicParsing="false" onAction="#addProductButtonClick" prefHeight="150.0" prefWidth="163.0" text="ADD A PRODUCT" />
+      <Button fx:id="shopButton" layoutX="366.0" layoutY="125.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="163.0" text="Shop" />
    </children>
 </AnchorPane>

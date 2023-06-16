@@ -1,21 +1,19 @@
 package com.example.supermarketfx;
+
+import com.example.supermarketfx.Classes.Supermarket;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
 
 public class MenuController {
 
+    private static Supermarket supermarket = new Supermarket();
+    private static Connection connection = null;
     private Scene scene;
     private Stage stage;
     @FXML
@@ -23,28 +21,43 @@ public class MenuController {
     @FXML
     protected Button logout;
 
+    @FXML
+    protected Button addProductButton;
+
+    @FXML
+    protected Button shopButton;
+
     public MenuController() {
-        //connectToDatabase();
-        //Image image = new Image("resources/com/example/supermarketfx/images/logo.png");
-        //logo.setImage(image);
-        //logo.setCache(true);
+        connectToDatabase();
     }
-    public void connectToDatabase() {
-        Connection connection = null;
+
+    public static void connectToDatabase() {
         try {
             connection = DriverManager.getConnection(
                     "jdbc:oracle:thin:@//localhost:15210/XEPDB1",
-                    "sys as sysdba", "Oraxe21"
+                    "supermarket", "yugo"
             );
-            System.out.println("connected");
+            supermarket.getAllProductsFromDataBase(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
-    public void onLogoutButtonClick() throws IOException {
+    public void addProductButtonClick() throws SQLException, IOException {
+        connection.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("add-product-view.fxml"));
+        stage = (Stage) addProductButton.getScene().getWindow();
+        scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void onLogoutButtonClick() throws IOException, SQLException {
+        connection.close();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        stage = (Stage)logout.getScene().getWindow();
+        stage = (Stage) logout.getScene().getWindow();
         scene = new Scene(fxmlLoader.load(), 400, 600);
         stage.setScene(scene);
         stage.show();
